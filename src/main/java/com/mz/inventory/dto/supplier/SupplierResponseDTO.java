@@ -1,21 +1,20 @@
-package com.mz.inventory.dto;
+package com.mz.inventory.dto.supplier;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
+public class SupplierResponseDTO {
 
-public class SupplierDTO {
-
-    @NotBlank(message = "Supplier name is required")
+    private Long id;
     private String name;
-    @NotBlank(message = "Supplier address is required")
     private String address;
-    @Pattern(regexp = "^[0-9]{10}$", message = "Phone must be exactly 10 digits")
-    @NotBlank(message = "Supplier number is required")
     private String phone;
-    @NotBlank(message = "Supplier email is required")
-    @Email(message = "Invalid email format")
     private String email;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

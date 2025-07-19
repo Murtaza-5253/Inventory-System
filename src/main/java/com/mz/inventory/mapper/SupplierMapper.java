@@ -1,7 +1,7 @@
 package com.mz.inventory.mapper;
 
-import com.mz.inventory.dto.SupplierDTO;
-import com.mz.inventory.dto.SupplierResponseDTO;
+import com.mz.inventory.dto.supplier.SupplierDTO;
+import com.mz.inventory.dto.supplier.SupplierResponseDTO;
 import com.mz.inventory.model.Supplier;
 
 public class SupplierMapper {

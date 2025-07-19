@@ -1,5 +1,7 @@
 package com.mz.inventory.service;
 
+import com.mz.inventory.dto.product.ProductDTO;
+import com.mz.inventory.mapper.ProductMapper;
 import com.mz.inventory.model.Product;
 import com.mz.inventory.repository.ProductRepository;
 import jakarta.transaction.Transactional;
@@ -19,28 +21,26 @@ public class ProductService {
         return productRepo.findAll();
     }
 
-    public Product addProduct(Product product) {
-        Optional<Product> productOptional = productRepo.findProductByName(product.getName());
-        if (productOptional.isPresent()) {
-            throw new IllegalStateException("Product already exists");
-        }
-        return productRepo.save(product);
+    public Product addProduct(ProductDTO product) {
+        Product prd = ProductMapper.toEntity(product);
+        return productRepo.save(prd);
     }
 
     public void deleteProduct(Long id) {
-        boolean exists = productRepo.existsById(id);
-        if(!exists) {
-            throw new IllegalStateException("Product not found");
-        }
-        productRepo.deleteById(id);
+        Product prd = getProductById(id);
+        productRepo.delete(prd);
     }
 
+    public Product getProductById(Long id) {
+        return productRepo.findById(id).
+                orElseThrow(() -> new IllegalStateException("Product not found"));
+    }
     @Transactional
-    public void updateProduct(Long id, int quantity, double price,String category) {
-        Product product = productRepo.findById(id).
-                orElseThrow(()-> new IllegalStateException("Product not found"));
-        product.setQuantity(quantity);
-        product.setPrice(price);
-        product.setCategory(category);
+    public Product updateProduct(Long id,ProductDTO productDTO) {
+        Product product = getProductById(id);
+        product.setQuantity(productDTO.getQuantity());
+        product.setPrice(productDTO.getPrice());
+        product.setCategory(productDTO.getCategory());
+        return productRepo.save(product);
     }
 }
