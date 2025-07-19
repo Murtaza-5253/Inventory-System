@@ -9,7 +9,7 @@ public class ProductResponseDTO {
 
     private Long id;
     private String name;
-    private String category;
     private int quantity;
     private double price;
+    private String supplierName;
 }

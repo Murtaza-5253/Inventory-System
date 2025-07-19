@@ -41,7 +41,7 @@ public class ProductController {
         return ResponseEntity.ok(ProductMapper.toDto(product));
     }
 
-    @PutMapping(path = "{productId}")
+    @PutMapping(path = "/{productId}")
     public ResponseEntity<ProductResponseDTO> updateProduct(@PathVariable long productId,
                               @Valid @RequestBody ProductDTO product) {
         Product product1 = productService.updateProduct(productId,product);

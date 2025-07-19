@@ -19,17 +19,17 @@ public class Product {
     private Long id;
 
     private String name;
-    private String category;
     private int quantity;
     private double price;
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "supplier_id")
+    private Supplier supplier;
 
     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", category='" + category + '\'' +
                 ", quantity=" + quantity +
                 ", price=" + price +
                 '}';
