@@ -12,4 +12,5 @@ public class ProductResponseDTO {
     private int quantity;
     private double price;
     private String supplierName;
+    private Long supplierId;
 }

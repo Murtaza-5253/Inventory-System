@@ -14,6 +14,7 @@ public class ProductMapper {
         dto.setPrice(product.getPrice());
         dto.setQuantity(product.getQuantity());
         dto.setSupplierName(product.getSupplier().getName());
+        dto.setSupplierId(product.getSupplier().getId());
         return dto;
     }
 
