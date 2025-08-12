@@ -20,37 +20,29 @@ public class SupplierController {
     private SupplierService supplierService;
 
     @PostMapping
-    public ResponseEntity<SupplierResponseDTO> addSupplier(@Valid @RequestBody SupplierDTO supplier) {
-        Supplier supp = supplierService.addSupplier(supplier);
-        return new ResponseEntity<>(SupplierMapper.toDto(supp), HttpStatus.CREATED);
+    public ResponseEntity<SupplierResponseDTO> createSupplier(@Valid @RequestBody SupplierDTO supplier) {
+        return ResponseEntity.ok(supplierService.createSupplier(supplier));
     }
 
 
     @GetMapping
     public ResponseEntity<List<SupplierResponseDTO>> getAllSuppliers() {
-        List<Supplier> suppliers = supplierService.getAllSuppliers();
-        List<SupplierResponseDTO> response = suppliers.stream()
-                .map(SupplierMapper::toDto)
-                .toList();
-        return ResponseEntity.ok(response);
+       return ResponseEntity.ok(supplierService.findAllSuppliers());
     }
 
     @GetMapping(path = "/{id}")
     public ResponseEntity<SupplierResponseDTO> getSupplierById(@PathVariable Long id) {
-        Supplier supplier = supplierService.getSupplierById(id);
-        return ResponseEntity.ok(SupplierMapper.toDto(supplier));
+        return ResponseEntity.ok(supplierService.findSupplierById(id));
     }
 
     @PutMapping(path = "/{id}")
     public ResponseEntity<SupplierResponseDTO> updateSupplier(@PathVariable Long id, @Valid @RequestBody SupplierDTO supplier) {
-        Supplier updatedSupplier = supplierService.updateSupplier(id, supplier);
-        SupplierResponseDTO responseDTO = SupplierMapper.toDto(updatedSupplier);
-        return ResponseEntity.ok(responseDTO);
+        return ResponseEntity.ok(supplierService.updateSupplier(id, supplier));
     }
 
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<Void> deleteSupplier(@PathVariable Long id) {
-        supplierService.deleteSupplier(id);
+        supplierService.deleteSupplierById(id);
         return ResponseEntity.noContent().build();
     }
 }

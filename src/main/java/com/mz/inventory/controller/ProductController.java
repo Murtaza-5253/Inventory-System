@@ -3,7 +3,6 @@ package com.mz.inventory.controller;
 import com.mz.inventory.dto.product.ProductDTO;
 import com.mz.inventory.dto.product.ProductResponseDTO;
 import com.mz.inventory.mapper.ProductMapper;
-import com.mz.inventory.mapper.SupplierMapper;
 import com.mz.inventory.model.Product;
 import com.mz.inventory.service.ProductService;
 import jakarta.validation.Valid;
@@ -12,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
