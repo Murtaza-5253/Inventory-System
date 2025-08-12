@@ -38,18 +38,21 @@ A backend REST API for managing products, categories, and stock in an inventory 
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
-src/
-├── controller/
-│   └── ProductController.java
-├── service/
-│   └── ProductService.java
-├── repository/
-│   └── ProductRepository.java
-├── model/
-│   └── Product.java
-└── InventorySystemApplication.java
+src/main/java/com/mz/inventory
+│── controller      # REST controllers
+│── dto             # DTO classes
+│── exception       # Custom exceptions
+│── model           # JPA entities
+│── repository      # Spring Data JPA repositories
+│── service         # Service interfaces
+│── service/impl    # Service implementations
+
+src/main/resources
+│── application.properties
+│── data.sql (optional sample data)
+
 
 ---
 
